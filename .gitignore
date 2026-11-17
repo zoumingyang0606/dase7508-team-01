@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+data/*.tar.gz
+results/**/dataset.csv.gz
+results/**/attack_log.jsonl.gz
+results/**/failure_examples.csv.gz
+results/**/manual_readability.csv
+results/**/demo_trace.json
+results/**/models/
+results/recheck/
+human_reviews/
+docs/课程参考资料/
+*.zip
+
+results/clean_reproduced.json
