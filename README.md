@@ -1,5 +1,9 @@
 # DASE7508 Spam Filtering Evaluation
 
+**Team contribution**
+
+Our five-member team worked together offline to design the project, write the code, and run the experiments, with one member uploading the code to GitHub on behalf of the team.
+
 This repository import records the defensive evaluation from the revised Enron1 project. A uses word TF-IDF and logistic regression. B adds inference-time normalization before the same word model. C uses character TF-IDF and logistic regression. The shareable materials include a clean-input replay for A and C, the frozen clean counts for A/B/C, pooled results from the supplied paired evaluation, and tests for the two miss-rate formulas.
 
 ## Run the checks
