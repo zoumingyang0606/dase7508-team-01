@@ -7,6 +7,23 @@ from src.core import metrics
 
 
 class PairedMetricTests(unittest.TestCase):
+    def test_requires_one_prediction_per_message(self):
+        for position in range(3):
+            inputs = [["spam", "spam"], ["ham", "spam"], ["spam", "spam"]]
+            inputs[position] = inputs[position][:1]
+            with self.subTest(position=position), self.assertRaisesRegex(ValueError, "same length"):
+                metrics(*inputs)
+
+    def test_requires_one_dimensional_inputs(self):
+        for position in range(3):
+            for malformed in ("spam", [["spam"], ["spam"]]):
+                inputs = [["spam", "spam"], ["ham", "spam"], ["spam", "spam"]]
+                inputs[position] = malformed
+                with self.subTest(position=position, value=malformed), self.assertRaisesRegex(
+                    ValueError, "one-dimensional"
+                ):
+                    metrics(*inputs)
+
     def test_original_misses_do_not_count_as_bypasses(self):
         result = metrics(["spam", "spam", "spam"], ["ham", "ham", "spam"],
                          ["spam", "ham", "spam"])

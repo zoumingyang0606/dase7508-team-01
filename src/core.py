@@ -52,7 +52,11 @@ def fit(texts, labels, valid, y, char):
 def ratio(a,b):return float(a/b) if b else float('nan')
 
 def metrics(y,pred,base):
-    y,pred,base=map(np.asarray,(y,pred,base))
+    y, pred, base = map(np.asarray, (y, pred, base))
+    if any(values.ndim != 1 for values in (y, pred, base)):
+        raise ValueError("Labels, current predictions and original predictions must be one-dimensional.")
+    if not (len(y) == len(pred) == len(base)):
+        raise ValueError("Labels, current predictions and original predictions must have the same length.")
     tn,fp,fn,tp=map(int,confusion_matrix(y,pred,labels=['ham','spam']).ravel())
     eligible=(y=='spam')&(base=='spam');num=int((eligible&(pred=='ham')).sum());den=int(eligible.sum())
     return dict(TP=tp,FP=fp,TN=tn,FN=fn,accuracy=ratio(tp+tn,len(y)),precision=ratio(tp,tp+fp),
