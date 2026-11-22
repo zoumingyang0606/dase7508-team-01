@@ -1,0 +1,49 @@
+{
+  "source_sha256": "3d6a1fcced6c30b1701a3fd04c6b912d7046208f6ef6f4fdcf022f64bdc6c32f",
+  "source": "https://www2.aueb.gr/users/ion/data/enron-spam/preprocessed/enron1.tar.gz",
+  "split": {
+    "train": {
+      "n": 2854,
+      "spam": 812,
+      "ham": 2042
+    },
+    "validation": {
+      "n": 951,
+      "spam": 270,
+      "ham": 681
+    },
+    "test": {
+      "n": 952,
+      "spam": 271,
+      "ham": 681
+    }
+  },
+  "A": {
+    "C": 1,
+    "validation_F1": 0.9616087751371115,
+    "grid": [
+      {
+        "C": 1,
+        "validation_F1": 0.9616087751371115
+      },
+      {
+        "C": 4,
+        "validation_F1": 0.9616087751371115
+      }
+    ]
+  },
+  "C": {
+    "C": 4,
+    "validation_F1": 0.9684601113172542,
+    "grid": [
+      {
+        "C": 1,
+        "validation_F1": 0.949343339587242
+      },
+      {
+        "C": 4,
+        "validation_F1": 0.9684601113172542
+      }
+    ]
+  }
+}
